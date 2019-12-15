@@ -7,12 +7,20 @@ Każde polecenie składa się z aliasu polecenia oraz par parametr-wartość.
 ### Polecenia nastawne
 
 #### SET
-Ustawia wartość nastawy
+Ustawia wartość nastawy:
 
-* UNIT
-
+* LINEAR_UNIT = [ MM | M | PERCENT ]
+* ANGULAR_UNIT = [ RAD | DEG | PERCENT ]
+* TIME_FORMAT = [ ... ]
 
 ### Polecenia wykonawcze
+
+#### MOV
+Powoduje wykonanie ruchu. Parametry
+* TIME = [ ... ]
+* Q1..Q6 = [ ... ]
+
+
 
 
 // Rodzaje poleceń
