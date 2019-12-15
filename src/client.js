@@ -1,12 +1,25 @@
-//client.js
+'use strict';
+
+const config = require('./config.json');
+
 var io = require('socket.io-client');
-var socket = io.connect('http://localhost:3000', {reconnect: true});
+
+var socket = io.connect( config.serverAddress, 
+    {
+        reconnect: true,
+        query: {
+            token: 'secret',
+            id: 'pi'
+        }
+    } 
+);
 
 // Add a connect listener
-socket.on('connect', function (socket) {
-    console.log('Connected!');
+socket.on('connect', function () {
+    console.log( socket );
+    socket.emit( config.robotChannel )
 } );
 
-socket.on('CH02', function (body) {
+socket.on(config.robotChannel, function (body) {
 	console.log(body);
 } );
