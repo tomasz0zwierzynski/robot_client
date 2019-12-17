@@ -17,9 +17,10 @@ var socket = io.connect( config.serverAddress,
 // Add a connect listener
 socket.on('connect', function () {
     console.log( socket );
-    socket.emit( config.robotChannel )
+    socket.emit( config.robotChannel, 'PI', 'Hello' )
 } );
 
 socket.on(config.robotChannel, function (body) {
-	console.log(body);
+    console.log('Message from server: ');
+    console.log(body);
 } );
