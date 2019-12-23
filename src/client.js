@@ -24,3 +24,7 @@ socket.on(config.robotChannel, function (body) {
     console.log('Message from server: ');
     console.log(body);
 } );
+
+const cli = require('./interface/cli');
+
+cli.startCli();
