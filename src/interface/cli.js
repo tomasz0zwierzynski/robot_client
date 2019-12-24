@@ -1,5 +1,7 @@
 const readline = require('readline');
 
+let callbackMethod;
+
 function startCli() {
 
     const rl = readline.createInterface({
@@ -12,6 +14,7 @@ function startCli() {
     const commands = {
         pwd: function () {
             console.log(process.cwd());
+            rl.prompt();
         },
     
         close: function () {
@@ -27,12 +30,20 @@ function startCli() {
         if (input in commands) {
             commands[input]();
         } else {
-            console.log('Unknown command');
+            
+            callbackMethod();
+            rl.prompt();
+            // console.log('Unknown command');
+            // rl.prompt();
         }
-        rl.prompt();
     } );
 }
 
+function onCommand ( callback ) {
+    callbackMethod = callback;
+}
+
 module.exports = {
-    startCli
+    startCli,
+    onCommand
 }
